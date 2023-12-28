@@ -59,6 +59,8 @@ It is generated when you do **mvn clean install**
 
 Location: [target/apidocs](target/apidocs)
 
+Click to view doc in browser: [https://htmlpreview.github.io/?https://github.com/mojo2jojo/tripmanager-lld/blob/main/target/apidocs/index.html](https://htmlpreview.github.io/?https://github.com/mojo2jojo/tripmanager-lld/blob/main/target/apidocs/index.html)
+
 ## UML diagram
 
 It is generated when you do **mvn clean install**
