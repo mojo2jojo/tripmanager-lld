@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.travelpackage</groupId>
+	<artifactId>takeatrip</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>takeatrip</name>
+	<description>Software system that allows travel agencies to maintain their travel packages&apos; itinerary and passengers</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+      <groupId>com.iluwatar.urm</groupId>
+      <artifactId>urm-maven-plugin</artifactId>
+      <version>2.1.1</version>
+      <configuration>
+        <!-- if outputDirectory is not set explicitly it will default to your build dir -->
+        <outputDirectory>${project.basedir}/etc</outputDirectory>
+        <packages>
+          <param>com.travelpackage.takeatrip</param>
+        </packages>
+        <includeMainDirectory>true</includeMainDirectory>
+        <includeTestDirectory>false</includeTestDirectory>
+        <presenter>graphviz</presenter>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>process-classes</phase>
+          <goals>
+            <goal>map</goal>
+          </goals>
+        </execution>
+      </executions>
+      <dependencies>
+        <dependency>
+          <groupId>com.travelpackage</groupId>
+	<artifactId>takeatrip</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+      </dependencies>
+    </plugin>
+
+		</plugins>
+	</build>
+
+</project>

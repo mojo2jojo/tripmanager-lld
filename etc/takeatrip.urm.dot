@@ -1,0 +1,59 @@
+digraph domain {
+  edge [ fontsize = 11 ];
+  node [ shape=record ];
+  subgraph cluster_0 {
+    label = "com.travelpackage.takeatrip.travelagency";
+    TravelAgency [ label = "{TravelAgency | + bookPackageByID(Passenger, TravelPackage, List<Long>) : BookingDetails\l+ getBookingMap() : Map<Passenger, List<BookingDetails>>\l+ getTravelPackagesList() : List<TravelPackage>\l+ init()\l+ listTravelPackages() : List<TravelPackage>\l+ printFreeActivitiesInPackage(TravelPackage)\l+ printPassengerDetails(Passenger)\l+ printPassengerList(TravelPackage)\l}" ] 
+    TravelAgencyImpl [ label = "{TravelAgencyImpl | + bookPackageByID(person : Passenger, travelpackage : TravelPackage, userActivityListId : List<Long>) : BookingDetails\l+ getBookingMap() : Map<Passenger, List<BookingDetails>>\l+ getTravelPackagesList() : List<TravelPackage>\l+ init()\l+ listTravelPackages() : List<TravelPackage>\l+ printFreeActivitiesInPackage(travelpackage : TravelPackage)\l+ printPassengerDetails(person : Passenger)\l+ printPassengerList(travelpackage : TravelPackage)\l+ setBookingMap(bookingMap : Map<Passenger, List<BookingDetails>>)\l+ setTravelPackagesList(travelPackagesList : List<TravelPackage>)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_1 {
+    label = "com.travelpackage.takeatrip.util";
+    Util [ label = "{Util | + getOneTravelpackage() : TravelPackage\l+ getSomeActivities() : List<Activity>\l+ getSomeDestinations() : List<Destination>\l}" ] 
+  }
+  subgraph cluster_2 {
+    label = "com.travelpackage.takeatrip.travelpackage";
+    TravelPackage [ label = "{TravelPackage | + addPassenger(Passenger)\l+ getId() : Long\l+ getItinerary() : List<Destination>\l+ getName() : String\l+ getPassengerCapacity() : int\l+ getPassengers() : List<Passenger>\l}" ] 
+    TravelPackageImpl [ label = "{TravelPackageImpl | + addPassenger(passenger : Passenger)\l+ getId() : Long\l+ getItinerary() : List<Destination>\l+ getName() : String\l+ getPassengerCapacity() : int\l+ getPassengers() : List<Passenger>\l+ setItinerary(itinerary : List<Destination>)\l+ setName(name : String)\l+ setPassengerCapacity(passengerCapacity : int)\l+ setPassengers(passengers : List<Passenger>)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_3 {
+    label = "com.travelpackage.takeatrip.activity";
+    Activity [ label = "{Activity | + getCapacity() : int\l+ getCost() : BigDecimal\l+ getCurrentEnrollees() : int\l+ getDescription() : String\l+ getId() : Long\l+ getName() : String\l+ setCapacity(int)\l+ setCurrentEnrollees(int)\l}" ] 
+    ActivityImpl [ label = "{ActivityImpl | + getCapacity() : int\l+ getCost() : BigDecimal\l+ getCurrentEnrollees() : int\l+ getDescription() : String\l+ getId() : Long\l+ getName() : String\l+ setCapacity(capacity : int)\l+ setCost(cost : BigDecimal)\l+ setCurrentEnrollees(currentEnrollees : int)\l+ setDescription(description : String)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_4 {
+    label = "com.travelpackage.takeatrip.destination";
+    Destination [ label = "{Destination | + getActivities() : List<Activity>\l+ getId() : Long\l+ getName() : String\l}" ] 
+    DestinationImpl [ label = "{DestinationImpl | + getActivities() : List<Activity>\l+ getId() : Long\l+ getName() : String\l+ setActivities(activities : List<Activity>)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_5 {
+    label = "com.travelpackage.takeatrip.travelagency.booking";
+    BookingDetails [ label = "{BookingDetails | + getActivityList() : List<Activity>\l+ getCost() : BigDecimal\l+ getId() : Long\l+ getPassenger() : Passenger\l+ getTravelPackage() : TravelPackage\l}" ] 
+    BookingDetailsImpl [ label = "{BookingDetailsImpl | + getActivityList() : List<Activity>\l+ getCost() : BigDecimal\l+ getId() : Long\l+ getPassenger() : Passenger\l+ getTravelPackage() : TravelPackage\l+ setActivityList(activityList : List<Activity>)\l+ setCost(cost : BigDecimal)\l+ setPassenger(passenger : Passenger)\l+ setTravelPackage(travelPackage : TravelPackage)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_6 {
+    label = "com.travelpackage.takeatrip.passenger";
+    GoldPassenger [ label = "{GoldPassenger | + getBalance() : BigDecimal\l+ getId() : Long\l+ getName() : String\l+ makePayment(totalActivityCost : BigDecimal)\l+ setBalance(balance : BigDecimal)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+    Passenger [ label = "{Passenger | + getBalance() : BigDecimal\l+ getId() : Long\l+ getName() : String\l+ makePayment(BigDecimal)\l}" ] 
+    PremiumPassenger [ label = "{PremiumPassenger | + getBalance() : BigDecimal\l+ getId() : Long\l+ getName() : String\l+ makePayment(totalActivityCost : BigDecimal)\l+ setBalance(balance : BigDecimal)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+    StandardPassenger [ label = "{StandardPassenger | + getBalance() : BigDecimal\l+ getId() : Long\l+ getName() : String\l+ makePayment(totalActivityCost : BigDecimal)\l+ setBalance(balance : BigDecimal)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_7 {
+    label = "com.travelpackage.takeatrip";
+    TakeatripApplication [ label = "{TakeatripApplication | + main(args : String[])\l+ printSection(sectionMessage : String, message : String)\l}" ] 
+  }
+  BookingDetailsImpl -> Passenger [ dir=back arrowtail=odiamond color=slategray];
+  TravelAgencyImpl -> TravelPackage [ dir=back arrowtail=odiamond color=slategray];
+  TravelPackageImpl -> Passenger [ dir=back arrowtail=odiamond color=slategray];
+  BookingDetailsImpl -> Activity [ dir=back arrowtail=odiamond color=slategray];
+  DestinationImpl -> Activity [ dir=back arrowtail=odiamond color=slategray];
+  TravelPackageImpl -> Destination [ dir=back arrowtail=odiamond color=slategray];
+  BookingDetailsImpl -> TravelPackage [ dir=back arrowtail=odiamond color=slategray];
+  ActivityImpl -> Activity [arrowhead=empty color=slategray];
+  DestinationImpl -> Destination [arrowhead=empty color=slategray];
+  GoldPassenger -> Passenger [arrowhead=empty color=slategray];
+  PremiumPassenger -> Passenger [arrowhead=empty color=slategray];
+  StandardPassenger -> Passenger [arrowhead=empty color=slategray];
+  TravelAgencyImpl -> TravelAgency [arrowhead=empty color=slategray];
+  BookingDetailsImpl -> BookingDetails [arrowhead=empty color=slategray];
+  TravelPackageImpl -> TravelPackage [arrowhead=empty color=slategray];
+}
